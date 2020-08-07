@@ -1,0 +1,23 @@
+{
+  "name": "ml-in-javascript",
+  "version": "1.0.0",
+  "description": "Trying to get a handle of Machine Learning in JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamiada/ML-in-JavaScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamiada/ML-in-JavaScript/issues"
+  },
+  "homepage": "https://github.com/kamiada/ML-in-JavaScript#readme",
+  "dependencies": {
+    "@tensorflow/tfjs": "^2.1.0",
+    "@tensorflow/tfjs-node": "^2.1.0"
+  }
+}
