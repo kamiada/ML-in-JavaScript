@@ -27,7 +27,7 @@ async function run(){
       io.emit('predictResult', await pitch_type.predictSample(sample));
     })
   })
-  let numTrainingIterations = 3; 
+  let numTrainingIterations = 10; 
   for(var i=0;i<numTrainingIterations; i++){
     console.log(`Training iteration : ${i+1} / ${numTrainingIterations}`);
     await pitch_type.model.fitDataset(pitch_type.trainingData, {epochs: 1});
