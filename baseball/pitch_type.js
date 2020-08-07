@@ -1,7 +1,7 @@
 const tf = require('@tensorflow/tfjs');
 
 // util function to normalize a value between a given range.
-function normalise(value, min, max) {
+function normalize(value, min, max) {
   if (min === undefined || max === undefined) {
     return value;
   } return (value - min) / (max - min);
