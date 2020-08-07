@@ -103,7 +103,7 @@ async function evaluate(testData) {
   return results;
 }
 
-async function predictSamle(sample){
+async function predictSample(sample){
   let result = model.predict(tf.tensor(sample, [1,sample.length])).arraySync();
   var maxValue = 0;
   var predictPitch = 7;
@@ -118,5 +118,44 @@ async function predictSamle(sample){
 
 //this function determines the accuracy of the evaluation for a given pitch class by index 
 function calcPitchClassEval(pitchIndex, classSize, values){
-  
+  // Output has 7 different class values for each pitch, offset based on
+  // which pitch class (ordered by i)
+  let index = (pitchIndex * classSize * NUM_PITCH_CLASSES) + pitchIndex;
+  let total = 0;
+  for (let i = 0; i< classSize; i++){
+    total += values[index];
+    index += NUM_PITCH_CLASSES;
+  }
+  return total/classSize;
+}
+// Returns the string value for Baseball pitch labels
+function pitchFromClassNum(classNum){
+  switch(classNum){
+    case 0:
+      return 'Fastball (2-seam)';
+    case 1:
+      return 'Fastball (4-seam)';
+    case 2:
+      return 'Fastball (sinker)';
+    case 3:
+      return 'Fastball (cutter)';
+    case 4:
+      return 'Slider';
+    case 5:
+      return 'Changeup';
+    case 6:
+      return 'Curveball';
+    default:
+      return 'Unknown'; 
+  }
+}
+
+module.exports = {
+  evaluate,
+  model, 
+  pitchFromClassNum,
+  predictSample,
+  testValidationData,
+  trainingData,
+  TEST_DATA_LENGTH
 }
